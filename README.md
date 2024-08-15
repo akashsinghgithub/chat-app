@@ -1,4 +1,4 @@
-# Talk-A-Tive
+# Let' chat
 # MERN Chat Application
 
 A real-time chat application built using the MERN (MongoDB, Express, React, Node.js) stack. This application supports user authentication, real-time messaging, and user profile management.
