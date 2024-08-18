@@ -33,7 +33,7 @@ const ProfileModal = ({ user, children }) => {
             d="flex"
             justifyContent="center"
           >
-            {user ? user.name : "Profile"}
+            {user.name}
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody
@@ -42,26 +42,18 @@ const ProfileModal = ({ user, children }) => {
             alignItems="center"
             justifyContent="space-between"
           >
-            {user ? (
-              <>
-                <Image
-                  borderRadius="full"
-                  boxSize="150px"
-                  src={user.pic}
-                  alt={user.name}
-                />
-                <Text
-                  fontSize={{ base: "28px", md: "30px" }}
-                  fontFamily="Work sans"
-                >
-                  Email: {user.email}
-                </Text>
-              </>
-            ) : (
-              <Text fontSize={{ base: "20px", md: "24px" }} fontFamily="Work sans">
-                No user information available
-              </Text>
-            )}
+            <Image
+              borderRadius="full"
+              boxSize="150px"
+              src={user.pic}
+              alt={user.name}
+            />
+            <Text
+              fontSize={{ base: "28px", md: "30px" }}
+              fontFamily="Work sans"
+            >
+              Email: {user.email}
+            </Text>
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>
