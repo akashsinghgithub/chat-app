@@ -77,7 +77,7 @@ function SideDrawer() {
         },
       };
 
-      const { data } = await axios.get(`/api/users?search=${search}`, config);
+      const { data } = await axios.get(`/api/ user?search=${search}`, config);
 
       setLoading(false);
       setSearchResult(data);
