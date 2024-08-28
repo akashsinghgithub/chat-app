@@ -17,6 +17,9 @@ import {
 const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  // Check if the user prop is defined and has necessary properties
+  const displayUser = user || { name: 'Default User', pic: 'defaultPicUrl', email: 'defaultEmail@example.com' };
+
   return (
     <>
       {children ? (
@@ -33,7 +36,7 @@ const ProfileModal = ({ user, children }) => {
             d="flex"
             justifyContent="center"
           >
-            {user.name}
+            {displayUser.name}
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody
@@ -45,14 +48,14 @@ const ProfileModal = ({ user, children }) => {
             <Image
               borderRadius="full"
               boxSize="150px"
-              src={user.pic}
-              alt={user.name}
+              src={displayUser.pic}
+              alt={displayUser.name}
             />
             <Text
               fontSize={{ base: "28px", md: "30px" }}
               fontFamily="Work sans"
             >
-              Email: {user.email}
+              Email: {displayUser.email}
             </Text>
           </ModalBody>
           <ModalFooter>

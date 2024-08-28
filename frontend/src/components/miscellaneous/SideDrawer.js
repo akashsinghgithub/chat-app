@@ -37,6 +37,7 @@ function SideDrawer() {
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null); // Add state for selected user
 
   const {
     setSelectedChat,
@@ -77,7 +78,7 @@ function SideDrawer() {
         },
       };
 
-      const { data } = await axios.get(`/api/ user?search=${search}`, config);
+      const { data } = await axios.get(`/api/users?search=${search}`, config);
 
       setLoading(false);
       setSearchResult(data);
@@ -108,6 +109,7 @@ function SideDrawer() {
 
       if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
       setSelectedChat(data);
+      setSelectedUser(user); // Set selected user when accessing chat
       setLoadingChat(false);
       onClose();
     } catch (error) {
@@ -180,8 +182,8 @@ function SideDrawer() {
               />
             </MenuButton>
             <MenuList>
-              <ProfileModal user={user}>
-                <MenuItem>My Profile</MenuItem>{" "}
+              <ProfileModal user={selectedUser || user}> {/* Pass selected user or fallback to current user */}
+                <MenuItem>My Profile</MenuItem>
               </ProfileModal>
               <MenuDivider />
               <MenuItem onClick={logoutHandler}>Logout</MenuItem>
@@ -211,7 +213,10 @@ function SideDrawer() {
                 <UserListItem
                   key={user._id}
                   user={user}
-                  handleFunction={() => accessChat(user._id)}
+                  handleFunction={() => {
+                    accessChat(user._id);
+                    setSelectedUser(user); // Set selected user from search results
+                  }}
                 />
               ))
             )}
