@@ -6,13 +6,14 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "build": "npm install --legacy-peer-deps && npm install --legacy-peer-deps --prefix frontend && npm run build --prefix frontend"
+    "build": "npm install --legacy-peer-deps && npm install --legacy-peer-deps --prefix frontend && npm run build --prefix frontend",
+    "preinstall": "npx npm-force-resolutions"
   },
   "keywords": [
     "mern",
     "chat-app"
   ],
-  "author": "Piyush Agarwal",
+  "author": "Akash Singh",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -21,15 +22,17 @@
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^5.12.9",
     "nodemon": "^2.0.7",
     "socket.io": "^4.1.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2",
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
-    "babel-preset-react-app": "^10.0.1"
+    "babel-preset-react-app": "^10.0.1",
+    "npm-force-resolutions": "^0.0.10"
   }
 }
